@@ -4,6 +4,8 @@
 #include "main.h"
 #include "triangleSolver.h"
 
+// Brodie Arkell - Implementation Class - PolygonChecker Assignment
+
 int side = 0;
 
 int main() {
