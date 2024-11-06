@@ -1,3 +1,4 @@
+// samp - CSCN71000 (Implementation) - Group Project - Section 1
 #include <stdio.h>
 #include <stdbool.h>
 
