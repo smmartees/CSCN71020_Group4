@@ -1,9 +1,12 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "main.h"
-#include "triangleSolver.h"
+// CSCN7
+// samp - CSCN71000 (Implementation) - Group Project - Section 1
+
 #include <stdio.h>
 #include <stdbool.h>
 
+#include "main.h"
+#include "triangleSolver.h"
 #define ZERO 0
 #define ONE 1
 #define TWO 2
@@ -18,8 +21,7 @@ int side = ZERO;
 
 int main() {
 
-
-	int triangleSides[TRIANGLESIDES] = { ZERO, ZERO, ZERO };
+	
 
 	bool continueProgram = true;
 	while (continueProgram) {
@@ -31,16 +33,18 @@ int main() {
 		{
 		case 1:
 			printf("Triangle selected.\n");
+			int triangleSides[TRIANGLESIDES] = { ZERO, ZERO, ZERO };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			
-			char* result = analyzeTriangle(triangleSidesPtr[ZERO], triangleSidesPtr[ONE], triangleSidesPtr[TWO]);
+			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf("%s\n", result);
+			// if statement here
 			break;
 		case 0:
 			continueProgram = false;
 			break;
 		default:
-			printf("Invalid value entered.\n"); // clear buffer if char inputted
+			printf("Invalid value entered.\n");
 			while (getchar() != '\n');
 			break;
 		}
@@ -55,16 +59,16 @@ void printWelcome() {
 	printf("**   Polygon Checker  **\n");
 	printf(" **********************\n");
 }
-// Next on the list to fix// ensure garbage values don't break it
+
+// next to fix // ensure no garbage
 int printShapeMenu() {
 	printf("1. Triangle\n");
-	printf("2. triangle Angles\n");
 	printf("0. Exit\n");
 
 	int shapeChoice;
 
 	printf("Enter number: ");
-	scanf("%1o", &shapeChoice); // next on list to improve
+	scanf("%1o", &shapeChoice); // next fix
 
 	return shapeChoice;
 }
