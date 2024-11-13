@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 // CSCN7
 // samp - CSCN71000 (Implementation) - Group Project - Section 1
 
@@ -6,10 +7,22 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#define ZERO 0
+#define ONE 1
+#define TWO 2
+#define TRIANGLESIDES 3
 
-int side = 0;
+
+// addd struct next
+// for points 
+
+
+int side = ZERO;
 
 int main() {
+
+	
+
 	bool continueProgram = true;
 	while (continueProgram) {
 		printWelcome();
@@ -19,18 +32,20 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
-			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
+			printf("Triangle selected.\n");
+			int triangleSides[TRIANGLESIDES] = { ZERO, ZERO, ZERO };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
+			
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
+			printf("%s\n", result);
+			// if statement here
 			break;
 		case 0:
 			continueProgram = false;
 			break;
 		default:
-			printf_s("Invalid value entered.\n");
+			printf("Invalid value entered.\n");
+			while (getchar() != '\n');
 			break;
 		}
 	}
@@ -38,30 +53,38 @@ int main() {
 }
 
 void printWelcome() {
-	printf_s("\n");
-	printf_s(" **********************\n");
-	printf_s("**     Welcome to     **\n");
-	printf_s("**   Polygon Checker  **\n");
-	printf_s(" **********************\n");
+	printf("\n");
+	printf(" **********************\n");
+	printf("**     Welcome to     **\n");
+	printf("**   Polygon Checker  **\n");
+	printf(" **********************\n");
 }
 
+// next to fix // ensure no garbage
 int printShapeMenu() {
-	printf_s("1. Triangle\n");
-	printf_s("0. Exit\n");
+	printf("1. Triangle\n");
+	printf("0. Exit\n");
 
 	int shapeChoice;
 
-	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
+	printf("Enter number: ");
+	scanf("%1o", &shapeChoice); // next fix
 
 	return shapeChoice;
 }
 
 int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
+	int sideNum[TRIANGLESIDES] = { ONE, TWO, TRIANGLESIDES };
+	printf("Enter the three sides of the triangle: \n");
+	for (int i = ZERO; i < TRIANGLESIDES; i++)
 	{
-		scanf_s("%d", &triangleSides[i]);
+		printf("side%d: ", sideNum[i]);
+		if (scanf("%d", &triangleSides[i]) != ONE) {
+			printf("Invalid input. Please enter integer\n");
+			i--;
+
+			while (getchar() != '\n');
+		}
 	}
 	return triangleSides;
 }
