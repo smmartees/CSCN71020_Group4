@@ -1,14 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include "main.h"
+#include "triangleSolver.h"
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "main.h"
-#include "triangleSolver.h"
+#define ZERO 0
+#define ONE 1
+#define TWO 2
+#define TRIANGLESIDES 3
 
-// Brodie Arkell - Implementation Class - PolygonChecker Assignment
 
-int side = 0;
+int side = ZERO;
 
 int main() {
+
+
+	int triangleSides[TRIANGLESIDES] = { ZERO, ZERO, ZERO };
+
 	bool continueProgram = true;
 	while (continueProgram) {
 		printWelcome();
@@ -18,18 +26,27 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
-			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
+			printf("Triangle selected.\n");
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
+			
+			char* result = analyzeTriangle(triangleSidesPtr[ZERO], triangleSidesPtr[ONE], triangleSidesPtr[TWO]);
+			printf("%s\n", result);
+			break;
+
+		case 2:
+			//Triangle angles feature add
+			printf("Triangle angles selected.\n");
+			int* triangleSidesAnglePtr = getTriangleSides(triangleSides);
+			// add angle function here...
+			//char* angles = getTriangleAngles(triangleSidesAnglePtr[ZERO], triangleSidesAnglePtr[ONE], triangleSidesAnglePtr[TWO]);
+			// print angles here____
 			break;
 		case 0:
 			continueProgram = false;
 			break;
 		default:
-			printf_s("Invalid value entered.\n");
+			printf("Invalid value entered.\n"); // clear buffer if char inputted
+			while (getchar() != '\n');
 			break;
 		}
 	}
@@ -37,30 +54,38 @@ int main() {
 }
 
 void printWelcome() {
-	printf_s("\n");
-	printf_s(" **********************\n");
-	printf_s("**     Welcome to     **\n");
-	printf_s("**   Polygon Checker  **\n");
-	printf_s(" **********************\n");
+	printf("\n");
+	printf(" **********************\n");
+	printf("**     Welcome to     **\n");
+	printf("**   Polygon Checker  **\n");
+	printf(" **********************\n");
 }
-
+// Next on the list to fix// ensure garbage values don't break it
 int printShapeMenu() {
-	printf_s("1. Triangle\n");
-	printf_s("0. Exit\n");
+	printf("1. Triangle\n");
+	printf("2. triangle Angles\n");
+	printf("0. Exit\n");
 
 	int shapeChoice;
 
-	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
+	printf("Enter number: ");
+	scanf("%1o", &shapeChoice); // next on list to improve
 
 	return shapeChoice;
 }
 
 int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
+	int sideNum[TRIANGLESIDES] = { ONE, TWO, TRIANGLESIDES };
+	printf("Enter the three sides of the triangle: \n");
+	for (int i = ZERO; i < TRIANGLESIDES; i++)
 	{
-		scanf_s("%d", &triangleSides[i]);
+		printf("side%d: ", sideNum[i]);
+		if (scanf("%d", &triangleSides[i]) != ONE) {
+			printf("Invalid input. Please enter integer\n");
+			i--;
+
+			while (getchar() != '\n');
+		}
 	}
 	return triangleSides;
 }
