@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 #include "triangleSolver.h"
 
@@ -21,4 +22,9 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	}
 
 	return result;
+}
+
+double getAngleOfTriangleUsingSSS(int a, int b, int c) {
+	double angle = acos( ((b * b) + (c * c) - (a * a)) / (2 * b * c) );
+	return angle;
 }
