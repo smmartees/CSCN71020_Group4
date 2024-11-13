@@ -24,7 +24,7 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	return result;
 }
 
-double getAngleOfTriangleUsingSSS(int a, int b, int c) {
-	double angle = acos( ((b * b) + (c * c) - (a * a)) / (2 * b * c) );
-	return angle;
+double getAngle(double a, double b, double c) {
+	// formula for findng angle A with sides a b c
+	return acos( ((b * b) + (c * c) - (a * a)) / (2 * b * c) );
 }
