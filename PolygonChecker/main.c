@@ -10,6 +10,10 @@
 #define TRIANGLESIDES 3
 
 
+// addd struct next
+// for points 
+
+
 int side = ZERO;
 
 int main() {
@@ -31,15 +35,6 @@ int main() {
 			
 			char* result = analyzeTriangle(triangleSidesPtr[ZERO], triangleSidesPtr[ONE], triangleSidesPtr[TWO]);
 			printf("%s\n", result);
-			break;
-
-		case 2:
-			//Triangle angles feature add
-			printf("Triangle angles selected.\n");
-			int* triangleSidesAnglePtr = getTriangleSides(triangleSides);
-			// add angle function here...
-			//char* angles = getTriangleAngles(triangleSidesAnglePtr[ZERO], triangleSidesAnglePtr[ONE], triangleSidesAnglePtr[TWO]);
-			// print angles here____
 			break;
 		case 0:
 			continueProgram = false;
