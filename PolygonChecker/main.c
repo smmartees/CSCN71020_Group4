@@ -2,19 +2,16 @@
 // CSCN7
 // samp - CSCN71000 (Implementation) - Group Project - Section 1
 
+#include "main.h"
+#include "triangleSolver.h"
+#include "points.h"
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "main.h"
-#include "triangleSolver.h"
 #define ZERO 0
 #define ONE 1
 #define TWO 2
 #define TRIANGLESIDES 3
-
-
-// addd struct next
-// for points 
 
 
 int side = ZERO;
@@ -38,7 +35,17 @@ int main() {
 			
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf("%s\n", result);
-			// if statement here
+			// if statement here for adding angles/ printing them
+			break;
+		case 2:
+			// implement rectangle stuff
+		{
+			PPOINTS points = createPointsArray(NUMOFPOINTS);
+
+
+
+			free(points);
+		}
 			break;
 		case 0:
 			continueProgram = false;
@@ -63,6 +70,7 @@ void printWelcome() {
 // next to fix // ensure no garbage
 int printShapeMenu() {
 	printf("1. Triangle\n");
+	printf("2. Rectangle\n");
 	printf("0. Exit\n");
 
 	int shapeChoice;
