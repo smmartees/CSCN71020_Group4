@@ -36,3 +36,5 @@ double findPerimeter(PPOINTS points) {
 			findSideLength(points[2], points[3]) +
 			findSideLength(points[3], points[0]) );
 }
+
+
