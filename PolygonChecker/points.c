@@ -1,7 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "points.h"
+#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
-PPOINTS createPointsArray(int numOfPoints) {
-	PPOINTS newArray = (PPOINTS)malloc(numOfPoints * sizeof(POINTS));
+PPOINT createPointsArray() {
+	PPOINT newArray = (PPOINT)malloc(NUMOFPOINTS * sizeof(POINT));
 	if (newArray == NULL) {
 		printf("did not allocate memory properly\n");
 		exit(EXIT_FAILURE);
@@ -11,7 +16,7 @@ PPOINTS createPointsArray(int numOfPoints) {
 
 }
 
-double findSideLength(POINTS p1, POINTS p2) {
+double findSideLength(POINT p1, POINT p2) {
 	double x, y;
 	// first, check orientation of points relative to eachother
 	if (p1.x < p2.x) {
@@ -30,7 +35,7 @@ double findSideLength(POINTS p1, POINTS p2) {
 	return (sqrt((x * x) + (y * y))); // pythagorean theorem
 }
 
-double findPerimeter(PPOINTS points) {
+double findPerimeter(PPOINT points) {
 	return (findSideLength(points[0], points[1]) +
 			findSideLength(points[1], points[2]) +
 			findSideLength(points[2], points[3]) +

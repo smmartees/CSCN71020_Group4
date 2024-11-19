@@ -111,10 +111,10 @@ namespace PolygonChekerUnitTests
 	public:
 		TEST_METHOD(SideLength1234)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = 1;
 			p1.y = 2;
-			POINTS p2;
+			POINT p2;
 			p2.x = 3;
 			p2.y = 4;
 
@@ -124,10 +124,10 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(SameXCoordinates2324)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = 2;
 			p1.y = 3;
-			POINTS p2;
+			POINT p2;
 			p2.x = 2;
 			p2.y = 4;
 
@@ -137,10 +137,10 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(SameYCoordinates3242)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = 3;
 			p1.y = 2;
-			POINTS p2;
+			POINT p2;
 			p2.x = 4;
 			p2.y = 2;
 
@@ -150,10 +150,10 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(SameCoordinates4444)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = 4;
 			p1.y = 4;
-			POINTS p2;
+			POINT p2;
 			p2.x = 4;
 			p2.y = 4;
 
@@ -163,10 +163,10 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(Sub1Coordinates)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = 0.5;
 			p1.y = 0.7;
-			POINTS p2;
+			POINT p2;
 			p2.x = 0.4;
 			p2.y = 0.9;
 
@@ -176,10 +176,10 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(AllNegativeCoordinates)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = -5;
 			p1.y = -7;
-			POINTS p2;
+			POINT p2;
 			p2.x = -4;
 			p2.y = -9;
 
@@ -189,10 +189,10 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(P1Negative)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = -5;
 			p1.y = -7;
-			POINTS p2;
+			POINT p2;
 			p2.x = 4;
 			p2.y = 9;
 
@@ -202,10 +202,10 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(P2Negative)
 		{
-			POINTS p1;
+			POINT p1;
 			p1.x = 5;
 			p1.y = 7;
-			POINTS p2;
+			POINT p2;
 			p2.x = -4;
 			p2.y = -9;
 
