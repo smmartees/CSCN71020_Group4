@@ -3,8 +3,8 @@
 
 // note: might want to change this to POINT, instead of POINTS
 typedef struct point {
-	int x;
-	int y;
+	double x;
+	double y;
 } POINT, *PPOINT;
 
 // Creates / initializes the array of points
