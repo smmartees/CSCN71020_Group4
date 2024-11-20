@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "points.h"
 #include "main.h"
+#include "triangleSolver.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -56,3 +57,31 @@ void setPoint(POINT* point, int x, int y) {
 	(*point).y = y; 
 }
 
+bool analyze4Points(PPOINT* points) {
+	double s1 = findSideLength(*points[0], *points[1]);
+	double s2 = findSideLength(*points[1], *points[2]);
+	double s3 = findSideLength(*points[2], *points[3]);
+	double s4 = findSideLength(*points[3], *points[0]);
+	double hs1s2 = findSideLength(*points[0], *points[2]);
+	double hs2s3 = findSideLength(*points[1], *points[3]);
+	double A = getAngle(hs2s3, s4, s1);
+	double B = getAngle(hs1s2, s1, s2);
+	double C = getAngle(hs2s3, s2, s3);
+	double D = getAngle(hs1s2, s3, s4);
+	if (A == 90 && B == 90 & C == 90 & D == 90) {
+		return true;
+	}
+	// Swap points 3 and 4, and see if new shape is a rectangle
+	A = getAngle(s2, hs1s2, s1);
+	B = getAngle(s4, s1, hs2s3);
+	C = getAngle(s2, hs2s3, s3);
+	D = getAngle(s4, s3, hs1s2);
+	if (A == 90 && B == 90 & C == 90 & D == 90) {
+		// actually swap the points before returning
+		POINT temp = *points[2];
+		*points[2] = *points[3];
+		*points[3] = temp;
+		return true;
+	}
+	return false;
+}
