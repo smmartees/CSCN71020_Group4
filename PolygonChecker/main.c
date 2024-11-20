@@ -11,8 +11,6 @@
 // samp - CSCN71000 (Implementation) - Group Project - Section 1
 
 
-int side = ZERO;
-
 int main() {
 
 	
@@ -27,7 +25,7 @@ int main() {
 		{
 		case 1:
 			printf("Triangle selected.\n");
-			int triangleSides[TRIANGLESIDES] = { ZERO, ZERO, ZERO };
+			int triangleSides[TRIANGLESIDES] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
@@ -101,12 +99,12 @@ int printShapeMenu() {
 
 
 int* getTriangleSides(int* triangleSides) {
-	int sideNum[TRIANGLESIDES] = { ONE, TWO, TRIANGLESIDES };
+	int sideNum[TRIANGLESIDES] = { 1, 2, 3 };
 	printf("Enter the three sides of the triangle: \n");
-	for (int i = ZERO; i < TRIANGLESIDES; i++)
+	for (int i = 0; i < TRIANGLESIDES; i++)
 	{
 		printf("side%d: ", sideNum[i]);
-		if (scanf("%d", &triangleSides[i]) != ONE) {
+		if (scanf("%d", &triangleSides[i]) != 1) {
 			printf("Invalid input. Please enter integer\n");
 			i--;
 
