@@ -1,20 +1,17 @@
 #pragma once
-#include <stdlib.h>
-#include "math.h"
-
-#define NUMOFPOINTS 4
+#include "main.h"
 
 // note: might want to change this to POINT, instead of POINTS
-typedef struct points {
+typedef struct point {
 	int x;
 	int y;
-} POINTS, *PPOINTS;
+} POINT, *PPOINT;
 
-// note: do not need to pass numOfPoints, as it is already a #define
-PPOINTS createPointsArray(int numOfPoints);
+// Creates / initializes the array of points
+PPOINT createPointsArray();
 
 // finds length between 2 points (param order doesn't matter)
-double findSideLength(POINTS p1, POINTS p2);
+double findSideLength(POINT p1, POINT p2);
 
 // returns sum of lengths betweeen 4 points in array
-double findPerimeter(PPOINTS points);
+double findPerimeter(PPOINT points);

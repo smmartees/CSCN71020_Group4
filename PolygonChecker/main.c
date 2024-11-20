@@ -1,17 +1,14 @@
 #define _CRT_SECURE_NO_WARNINGS
-// CSCN7
-// samp - CSCN71000 (Implementation) - Group Project - Section 1
 
 #include "main.h"
 #include "triangleSolver.h"
 #include "points.h"
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
-#define ZERO 0
-#define ONE 1
-#define TWO 2
-#define TRIANGLESIDES 3
+// CSCN7
+// samp - CSCN71000 (Implementation) - Group Project - Section 1
 
 
 int side = ZERO;
@@ -35,16 +32,23 @@ int main() {
 			
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf("%s\n", result);
-			// if statement here for adding angles/ printing them
+			// if statement here for getting and printing angles
+			if (result != "Not a triangle") {
+				printf("\nAngles of the triangle:\n");
+				printf("Angle 1: %f\n", getAngle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]));
+				printf("Angle 2: %f\n", getAngle(triangleSidesPtr[1], triangleSidesPtr[2], triangleSidesPtr[0]));
+				printf("Angle 3: %f\n", getAngle(triangleSidesPtr[2], triangleSidesPtr[0], triangleSidesPtr[1]));
+			}
 			break;
 		case 2:
-			// implement rectangle stuff
+			// Rectangle case
 		{
-			PPOINTS points = createPointsArray(NUMOFPOINTS);
+			PPOINT pointsArray = createPointsArray(NUMOFPOINTS);
+			// Need to get the points & validate them
 
 
-
-			free(points);
+			// free points after case finished
+			free(pointsArray);
 		}
 			break;
 		case 0:
@@ -67,19 +71,34 @@ void printWelcome() {
 	printf(" **********************\n");
 }
 
-// next to fix // ensure no garbage
+
 int printShapeMenu() {
 	printf("1. Triangle\n");
 	printf("2. Rectangle\n");
 	printf("0. Exit\n");
 
 	int shapeChoice;
+	bool validity = false;
+	do {
+		printf("Enter number: ");
+		if (scanf("%1d", &shapeChoice) != 1)
+		 {
+			while (getchar() != '\n');
+			printf("Invalid input\n");
+		}
 
-	printf("Enter number: ");
-	scanf("%1o", &shapeChoice); // next fix
+		if (shapeChoice == 1 || shapeChoice == 2 || shapeChoice == 0) {
+			validity = true;
+		}
+		else {
+			printf("Invalid input\n");
+			while (getchar() != '\n');
+		}
 
+	} while (validity == false);
 	return shapeChoice;
 }
+
 
 int* getTriangleSides(int* triangleSides) {
 	int sideNum[TRIANGLESIDES] = { ONE, TWO, TRIANGLESIDES };
