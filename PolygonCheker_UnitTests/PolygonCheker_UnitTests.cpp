@@ -51,7 +51,7 @@ namespace PolygonChekerUnitTests
 		TEST_METHOD(AT225)
 		{
 			int TriangleSides[3] = { 2,2,5};
-			char* ExpectedResult = "Isosceles triangle";
+			char* ExpectedResult = "Not a triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
@@ -69,16 +69,23 @@ namespace PolygonChekerUnitTests
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
+		TEST_METHOD(AT343)
+		{
+			double TriangleSides[3] = { 3,4,3 };
+			char* ExpectedResult = "Isosceles triangle";
+			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
+			Assert::AreEqual(ExpectedResult, ActualResult);
+		}
 		TEST_METHOD(AT123)
 		{
 			int TriangleSides[3] = { 1,2,3 };
-			char* ExpectedResult = "Scalene triangle";
+			char* ExpectedResult = "Not a triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(AT734)
 		{
-			int TriangleSides[3] = { 7,3,4 };
+			int TriangleSides[3] = { 6,3,4 };
 			char* ExpectedResult = "Scalene triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
