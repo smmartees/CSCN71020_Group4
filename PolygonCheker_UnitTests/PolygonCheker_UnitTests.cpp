@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+#include "math.h"
 
 // ***NOTE**** may need to add additional .obj files from the linker menu.
 // currently linked: main.obj, triangleSolver.obj,
@@ -7,6 +8,7 @@
 extern "C" {
 #include "../PolygonChecker/main.h"
 #include "../PolygonChecker/triangleSolver.h"
+#include "../PolygonChecker/points.h"	
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -101,6 +103,115 @@ namespace PolygonChekerUnitTests
 			char* ExpectedResult = "Scalene triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
+		}
+	};
+
+	TEST_CLASS(PointTests)
+	{
+	public:
+		TEST_METHOD(SideLength1234)
+		{
+			POINT p1;
+			p1.x = 1;
+			p1.y = 2;
+			POINT p2;
+			p2.x = 3;
+			p2.y = 4;
+
+			double expected = sqrt(8);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(SameXCoordinates2324)
+		{
+			POINT p1;
+			p1.x = 2;
+			p1.y = 3;
+			POINT p2;
+			p2.x = 2;
+			p2.y = 4;
+
+			double expected = sqrt(1);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(SameYCoordinates3242)
+		{
+			POINT p1;
+			p1.x = 3;
+			p1.y = 2;
+			POINT p2;
+			p2.x = 4;
+			p2.y = 2;
+
+			double expected = sqrt(1);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(SameCoordinates4444)
+		{
+			POINT p1;
+			p1.x = 4;
+			p1.y = 4;
+			POINT p2;
+			p2.x = 4;
+			p2.y = 4;
+
+			double expected = sqrt(0);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(Sub1Coordinates)
+		{
+			POINT p1;
+			p1.x = 0.5;
+			p1.y = 0.7;
+			POINT p2;
+			p2.x = 0.4;
+			p2.y = 0.9;
+
+			double expected = sqrt(0.2);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(AllNegativeCoordinates)
+		{
+			POINT p1;
+			p1.x = -5;
+			p1.y = -7;
+			POINT p2;
+			p2.x = -4;
+			p2.y = -9;
+
+			double expected = sqrt(5);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(P1Negative)
+		{
+			POINT p1;
+			p1.x = -5;
+			p1.y = -7;
+			POINT p2;
+			p2.x = 4;
+			p2.y = 9;
+
+			double expected = sqrt(337);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(P2Negative)
+		{
+			POINT p1;
+			p1.x = 5;
+			p1.y = 7;
+			POINT p2;
+			p2.x = -4;
+			p2.y = -9;
+
+			double expected = sqrt(337);
+			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
 		}
 	};
 }
