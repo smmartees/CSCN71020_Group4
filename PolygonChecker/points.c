@@ -42,4 +42,17 @@ double findPerimeter(PPOINT points) {
 			findSideLength(points[3], points[0]) );
 }
 
+void getPoint(POINT* point) {
+	printf("Enter x-coordinate: ");
+	scanf("%d", &(*point).x); 
+	printf("Enter y-coordinate: ");
+	scanf("%d", &(*point).y); 
+}
+
+
+
+void setPoint(POINT* point, int x, int y) {
+	(*point).x = x; 
+	(*point).y = y; 
+}
 
