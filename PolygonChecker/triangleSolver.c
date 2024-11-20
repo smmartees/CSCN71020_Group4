@@ -25,6 +25,6 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 }
 
 double getAngle(double a, double b, double c) {
-	// formula for findng angle A with sides a b c
-	return acos( ((b * b) + (c * c) - (a * a)) / (2 * b * c) );
+	// formula for findng angle A with sides a b c. Also, it convers rad to deg
+	return (180/M_PI * acos( ((b * b) + (c * c) - (a * a)) / (2 * b * c) ));
 }
