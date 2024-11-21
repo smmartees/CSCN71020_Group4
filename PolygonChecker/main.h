@@ -3,4 +3,4 @@
 #define NUMOFPOINTS 4
 void printWelcome();
 int printShapeMenu();
-int* getTriangleSides(int* triangleSides);
+double* getTriangleSides(double* triangleSides);
