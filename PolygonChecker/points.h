@@ -1,5 +1,6 @@
 #pragma once
 #include "main.h"
+#include <stdbool.h>
 
 // note: might want to change this to POINT, instead of POINTS
 typedef struct point {
