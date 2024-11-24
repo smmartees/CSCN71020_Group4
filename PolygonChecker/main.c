@@ -25,8 +25,8 @@ int main() {
 		{
 		case 1:
 			printf("Triangle selected.\n");
-			int triangleSides[TRIANGLESIDES] = { 0, 0, 0 };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
+			double triangleSides[TRIANGLESIDES] = { 0, 0, 0 };
+			double* triangleSidesPtr = getTriangleSides(triangleSides);
 			
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf("%s\n", result);
@@ -98,7 +98,7 @@ int printShapeMenu() {
 }
 
 
-int* getTriangleSides(int* triangleSides) {
+double* getTriangleSides(double* triangleSides) {
 	int sideNum[TRIANGLESIDES] = { 1, 2, 3 };
 	printf("Enter the three sides of the triangle: \n");
 	for (int i = 0; i < TRIANGLESIDES; i++)

@@ -1,5 +1,8 @@
 #pragma once
-char* analyzeTriangle(int side1, int side2, int side3);
+
+#define M_PI 3.14159265358979323846
+
+char* analyzeTriangle(double side1, double side2, double side3);
 
 // Takes three side lengths of a triangle,
 // and returns the angle opposite to the first side agruement
