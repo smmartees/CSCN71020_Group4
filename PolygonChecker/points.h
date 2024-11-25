@@ -21,4 +21,10 @@ double findPerimeter(PPOINT points);
 void getPoint(POINT* point);               
 
 // Updates a point's x and y coordinates with given values
-void setPoint(POINT* point, int x, int y); 
+void setPoint(PPOINT point, double x, double y); 
+
+double scanAndCheck(double number);
+
+void fillPointsArray(PPOINT pointsArray);
+
+bool analyze4Points(PPOINT* points);
