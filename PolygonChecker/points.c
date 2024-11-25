@@ -43,6 +43,11 @@ double findPerimeter(PPOINT points) {
 			findSideLength(points[3], points[0]) );
 }
 
+double getArea(PPOINT pointsArray) {	
+	return (findSideLength(pointsArray[0], pointsArray[1]) *
+			findSideLength(pointsArray[1], pointsArray[2]));
+}
+
 void getPoint(POINT* point) {
 	printf("Enter x-coordinate: ");
 	scanf("%d", &(*point).x); 
