@@ -112,6 +112,34 @@ namespace PolygonChekerUnitTests
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 	};
+	TEST_CLASS(InternalTriangleTests) 
+	{
+	public:
+		TEST_METHOD(EqualSides)
+		{
+			double Actual = getAngle(2.0, 2.0, 2.0);
+			double Expected = 60.00;
+			Assert::AreEqual(Expected, Actual);
+		}
+		TEST_METHOD(Isosceles322)
+		{
+			double Actual = getAngle(3.0, 2.0, 2.0);
+			double Expected = 97.1808;
+			Assert::AreEqual(Expected, Actual);
+		}
+		TEST_METHOD(Isosceles232)
+		{
+			double Actual = getAngle(2.0, 3.0, 2.0);
+			double Expected = 41.4069;
+			Assert::AreEqual(Expected, Actual);
+		}
+		TEST_METHOD(Isosceles223)
+		{
+			double Actual = getAngle(2.0, 2.0, 3.0);
+			double Expected = 41.4069;
+			Assert::AreEqual(Expected, Actual);
+		}
+	};
 
 	TEST_CLASS(PointTests)
 	{
