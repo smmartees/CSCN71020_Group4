@@ -17,6 +17,9 @@ double findSideLength(POINT p1, POINT p2);
 // returns sum of lengths betweeen 4 points in array
 double findPerimeter(PPOINT points);
 
+// returns area of a rectangle. Must confirm that it is a rectangle first.
+double getArea(PPOINT pointsArray);
+
 // Reads x and y coordinates from user input
 void getPoint(POINT* point);               
 
