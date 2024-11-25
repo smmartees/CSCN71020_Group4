@@ -52,10 +52,51 @@ void getPoint(POINT* point) {
 
 
 
-void setPoint(POINT* point, int x, int y) {
-	(*point).x = x; 
-	(*point).y = y; 
+void setPoint(PPOINT point, double x, double y) {
+	point->x = x;
+	point->y = y; 
 }
+
+double scanAndCheck(double number) {
+	bool validity = false;
+	while (true) {
+		printf("Enter number: ");
+		if (scanf("%lf", &number) != 1)
+		{
+			while (getchar() != '\n');
+			printf("Invalid input\n");
+		}
+		while (getchar() != '\n');
+		if (number > 0) {
+			return number;
+		}
+		else {
+			printf("Invalid input\n");
+			while (getchar() != '\n');
+		}
+	}
+}
+
+
+void fillPointsArray(PPOINT pointsArray) {
+	int pointNum = 1;
+	for (int i = 0; i < NUMOFPOINTS; i++) {
+		
+		double x = 0;
+		double y = 0;
+
+		printf("\nPoint%d X\n", pointNum);
+		x = scanAndCheck(x);
+
+		printf("\nPoint%d Y\n", pointNum);
+		y = scanAndCheck(y);
+
+		setPoint(&pointsArray[i], x, y);
+		pointNum++;
+	}
+}
+
+
 
 bool analyze4Points(PPOINT* points) {
 	double s1 = findSideLength(*points[0], *points[1]);

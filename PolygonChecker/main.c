@@ -42,8 +42,25 @@ int main() {
 			// Rectangle case
 		{
 			PPOINT pointsArray = createPointsArray(NUMOFPOINTS);
-			// Need to get the points & validate them
+			
+			fillPointsArray(pointsArray);
 
+							/// just to test points ///
+			printf("point1: X = %lf  Y = %lf\n", pointsArray[0].x, pointsArray[0].y);
+			printf("point2: X = %lf  Y = %lf\n", pointsArray[1].x, pointsArray[1].y);
+			printf("point3: X = %lf  Y = %lf\n", pointsArray[2].x, pointsArray[2].y);
+			printf("point4: X = %lf  Y = %lf\n", pointsArray[3].x, pointsArray[3].y);
+							/// just to test points ///
+
+			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
+			bool rectangleCheck = analyze4Points(pointsArray);
+			if (rectangleCheck != true) {
+				printf("Not a rectangle\n");
+			}
+			else {
+				printf("This is a rectangle\n");
+				//findArea(pointsArray);
+			}
 
 			// free points after case finished
 			free(pointsArray);
@@ -104,8 +121,8 @@ double* getTriangleSides(double* triangleSides) {
 	for (int i = 0; i < TRIANGLESIDES; i++)
 	{
 		printf("side%d: ", sideNum[i]);
-		if (scanf("%d", &triangleSides[i]) != 1) {
-			printf("Invalid input. Please enter integer\n");
+		if (scanf("%lf", &triangleSides[i]) != 1) {
+			printf("Invalid input. Please enter number\n");
 			i--;
 
 			while (getchar() != '\n');
