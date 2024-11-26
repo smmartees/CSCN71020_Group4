@@ -150,11 +150,6 @@
     <ClInclude Include="points.h" />
     <ClInclude Include="triangleSolver.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PolygonCheker_UnitTests\PolygonCheker_UnitTests.vcxproj">
-      <Project>{b6d7990f-3f50-40d5-bcd6-06bd8686b5d7}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
