@@ -2,6 +2,9 @@
 #include "main.h"
 #include <stdbool.h>
 
+// This helps in the comparison of doubles
+//#define DBL_EPSILON 2.2204460492503131e-16
+
 // note: might want to change this to POINT, instead of POINTS
 typedef struct point {
 	double x;
