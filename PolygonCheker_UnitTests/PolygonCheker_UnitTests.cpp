@@ -9,7 +9,8 @@
 extern "C" {
 #include "../PolygonChecker/main.h"
 #include "../PolygonChecker/triangleSolver.h"
-#include "../PolygonChecker/points.h"	
+#include "../PolygonChecker/points.h"
+#include "../PolygonChecker/menu.h"
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -268,6 +269,19 @@ namespace PolygonChekerUnitTests
 			setPoint(&testArray[1], 2, 4);
 			setPoint(&testArray[2], 5, 2);
 			setPoint(&testArray[3], 5, 4);
+
+			bool expected = true;
+			bool actual = analyze4Points(&testArray);
+
+			Assert::AreEqual(expected, actual);
+		}
+		TEST_METHOD(test2)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, 2);
+			setPoint(&testArray[1], 3, 4);
+			setPoint(&testArray[2], 5, 2);
+			setPoint(&testArray[3], 6, 4);
 
 			bool expected = true;
 			bool actual = analyze4Points(&testArray);
