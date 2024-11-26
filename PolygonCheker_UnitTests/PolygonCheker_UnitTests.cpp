@@ -275,5 +275,18 @@ namespace PolygonChekerUnitTests
 
 			Assert::AreEqual(expected, actual);
 		}
+		TEST_METHOD(test2)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, 2);
+			setPoint(&testArray[1], 3, 4);
+			setPoint(&testArray[2], 5, 2);
+			setPoint(&testArray[3], 6, 4);
+
+			bool expected = true;
+			bool actual = analyze4Points(&testArray);
+
+			Assert::AreEqual(expected, actual);
+		}
 	};
 }
