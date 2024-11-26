@@ -19,9 +19,7 @@ double findPerimeter(PPOINT points);
 
 // returns area of a rectangle. Must confirm that it is a rectangle first.
 double getArea(PPOINT pointsArray);
-
-// Reads x and y coordinates from user input
-void getPoint(POINT* point);               
+              
 
 // Updates a point's x and y coordinates with given values
 void setPoint(PPOINT point, double x, double y); 
