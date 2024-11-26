@@ -14,7 +14,6 @@ PPOINT createPointsArray() {
 	}
 
 	return newArray;
-
 }
 
 double findSideLength(POINT p1, POINT p2) {
@@ -114,7 +113,7 @@ bool analyze4Points(PPOINT* points) {
 	double B = getAngle(hs1s2, s1, s2);
 	double C = getAngle(hs2s3, s2, s3);
 	double D = getAngle(hs1s2, s3, s4);
-	if (A == 90 && B == 90 & C == 90 & D == 90) {
+	if (A == 90 && B == 90 && C == 90 && D == 90) {
 		return true;
 	}
 	// Swap points 3 and 4, and see if new shape is a rectangle
@@ -122,7 +121,7 @@ bool analyze4Points(PPOINT* points) {
 	B = getAngle(s4, s1, hs2s3);
 	C = getAngle(s2, hs2s3, s3);
 	D = getAngle(s4, s3, hs1s2);
-	if (A == 90 && B == 90 & C == 90 & D == 90) {
+	if (A == 90 && B == 90 && C == 90 && D == 90) {
 		// actually swap the points before returning
 		POINT temp = (*points)[2];
 		(*points)[2] = (*points)[3];
@@ -131,3 +130,38 @@ bool analyze4Points(PPOINT* points) {
 	}
 	return false;
 }
+
+//bool analyze4Points(PPOINT* points) {
+//	double s1 = findSideLength((*points)[0], (*points)[1]);
+//	double s2 = findSideLength((*points)[1], (*points)[2]);
+//	double s3 = findSideLength((*points)[2], (*points)[3]);
+//	double s4 = findSideLength((*points)[3], (*points)[0]);
+//	double hs1s2 = findSideLength((*points)[0], (*points)[2]);
+//	double hs2s3 = findSideLength((*points)[1], (*points)[3]);
+//	double A = getAngle(hs2s3, s4, s1);
+//	double B = getAngle(hs1s2, s1, s2);
+//	double C = getAngle(hs2s3, s2, s3);
+//	double D = getAngle(hs1s2, s3, s4);
+//	printf("%lf %lf %lf %lf\n", A, B, C, D);
+//	printf("%lf\n",A+B+C+D);
+//	if (A + B + C + D == 360.0) {
+//		if (A == 90.0 && B == 90.0 && C == 90.0 && D == 90.0) {
+//			return true;
+//		}
+//	}
+//	else {
+//		POINT temp = (*points)[2];
+//		(*points)[2] = (*points)[3];
+//		(*points)[3] = temp;
+//		A = getAngle(s2, hs1s2, s1);
+//		B = getAngle(s4, s1, hs2s3);
+//		C = getAngle(s2, hs2s3, s3);
+//		D = getAngle(s4, s3, hs1s2);
+//		printf("%lf %lf %lf %lf\n", A, B, C, D);
+//		printf("%lf\n", A + B + C + D);
+//		if (A == 90.0 && B == 90.0 && C == 90.0 && D == 90.0) {
+//			return true;
+//		}
+//	}
+//	return false;
+//}
