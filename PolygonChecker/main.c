@@ -59,7 +59,8 @@ int main() {
 			}
 			else {
 				printf("This is a rectangle\n");
-				//findArea(pointsArray);
+				printf("Area: %lf\n", getArea(pointsArray));
+
 			}
 
 			// free points after case finished
