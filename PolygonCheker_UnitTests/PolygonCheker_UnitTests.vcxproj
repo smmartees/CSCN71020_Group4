@@ -100,7 +100,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\CSCN71020_Group4\PolygonChecker\x64;C:\Users\sampe\source\repos\CSCN71020_Group4\PolygonChecker\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>points.obj;main.obj;triangleSolver.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>points.obj;main.obj;triangleSolver.obj;menu.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
