@@ -92,9 +92,29 @@ void fillPointsArray(PPOINT pointsArray) {
 	}
 }
 
+bool compareDoubles(double a, double b) {
+	return (fabs(a - b) < (DBL_EPSILON * fabs(a + b)));
+}
 
+
+// NOTE: these functions could be added later, 
+//		 to make analyze4Points() more modular.
+// 
+//void setAngles(double[] sideArray, double* angleArray[]) {
+//	// could be written
+//}
+// 
+//bool isQuadrilateral(double sum) {
+//	return (compareDoubles(sum, 360));
+//}
+//
+//bool isRectangle(double A, double B, double C, double D) {
+//	return (compareDoubles(A, 90) && compareDoubles(B, 90) && 
+//			compareDoubles(C, 90) && compareDoubles(D, 90));
+//}
 
 bool analyze4Points(PPOINT* points) {
+	// define all 6 possible side lengths, and 4 interior angles
 	double s1 = findSideLength((*points)[0], (*points)[1]);
 	double s2 = findSideLength((*points)[1], (*points)[2]);
 	double s3 = findSideLength((*points)[2], (*points)[3]);
@@ -105,55 +125,41 @@ bool analyze4Points(PPOINT* points) {
 	double B = getAngle(hs1s2, s1, s2);
 	double C = getAngle(hs2s3, s2, s3);
 	double D = getAngle(hs1s2, s3, s4);
-	if (A == 90 && B == 90 && C == 90 && D == 90) {
-		return true;
+	// There are 3 possible shapes: 2 bowties, and a quadrilateral.
+	// If it is a quadrilateral, then sum of interior angles == 360
+	// Return if quadrilateral, or swap points around until it is.
+	
+	// check if shape is a quadrilateral
+	if ((compareDoubles(A+B+C+D, 360))) {
+		// return true if quadrilateral is rectangle
+		return (compareDoubles(A, 90) && compareDoubles(B, 90) &&
+				compareDoubles(C, 90) && compareDoubles(D, 90));
 	}
-	// Swap points 3 and 4, and see if new shape is a rectangle
+	// swap P3 with P4
+	POINT temp = (*points)[2];
+	(*points)[2] = (*points)[3];
+	(*points)[3] = temp;
+	// reset interior angles
 	A = getAngle(s2, hs1s2, s1);
 	B = getAngle(s4, s1, hs2s3);
 	C = getAngle(s2, hs2s3, s3);
 	D = getAngle(s4, s3, hs1s2);
-	if (A == 90 && B == 90 && C == 90 && D == 90) {
-		// actually swap the points before returning
-		POINT temp = (*points)[2];
-		(*points)[2] = (*points)[3];
-		(*points)[3] = temp;
-		return true;
+	// check if shape is a quadrilateral
+	if ((compareDoubles(A + B + C + D, 360))) {
+		// return true \ if quadrilateral is rectangle
+		return (compareDoubles(A, 90) && compareDoubles(B, 90) &&
+				compareDoubles(C, 90) && compareDoubles(D, 90));
 	}
-	return false;
+	// swap P2 with P3
+	temp = (*points)[1];
+	(*points)[1] = (*points)[2];
+	(*points)[2] = temp;
+	// reset interior angles
+	A = getAngle(s1, hs2s3, s2);
+	B = getAngle(s3, s2, hs1s2);
+	C = getAngle(s1, hs1s2, s4);
+	D = getAngle(s3, s4, hs2s3);
+	// shape must be a quadrilateral. Return true if it is a rectangle
+	return (compareDoubles(A, 90) && compareDoubles(B, 90) &&
+			compareDoubles(C, 90) && compareDoubles(D, 90));
 }
-
-//bool analyze4Points(PPOINT* points) {
-//	double s1 = findSideLength((*points)[0], (*points)[1]);
-//	double s2 = findSideLength((*points)[1], (*points)[2]);
-//	double s3 = findSideLength((*points)[2], (*points)[3]);
-//	double s4 = findSideLength((*points)[3], (*points)[0]);
-//	double hs1s2 = findSideLength((*points)[0], (*points)[2]);
-//	double hs2s3 = findSideLength((*points)[1], (*points)[3]);
-//	double A = getAngle(hs2s3, s4, s1);
-//	double B = getAngle(hs1s2, s1, s2);
-//	double C = getAngle(hs2s3, s2, s3);
-//	double D = getAngle(hs1s2, s3, s4);
-//	printf("%lf %lf %lf %lf\n", A, B, C, D);
-//	printf("%lf\n",A+B+C+D);
-//	if (A + B + C + D == 360.0) {
-//		if (A == 90.0 && B == 90.0 && C == 90.0 && D == 90.0) {
-//			return true;
-//		}
-//	}
-//	else {
-//		POINT temp = (*points)[2];
-//		(*points)[2] = (*points)[3];
-//		(*points)[3] = temp;
-//		A = getAngle(s2, hs1s2, s1);
-//		B = getAngle(s4, s1, hs2s3);
-//		C = getAngle(s2, hs2s3, s3);
-//		D = getAngle(s4, s3, hs1s2);
-//		printf("%lf %lf %lf %lf\n", A, B, C, D);
-//		printf("%lf\n", A + B + C + D);
-//		if (A == 90.0 && B == 90.0 && C == 90.0 && D == 90.0) {
-//			return true;
-//		}
-//	}
-//	return false;
-//}

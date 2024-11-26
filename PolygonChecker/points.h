@@ -3,9 +3,8 @@
 #include <stdbool.h>
 
 // This helps in the comparison of doubles
-//#define DBL_EPSILON 2.2204460492503131e-16
+#define DBL_EPSILON 2.2204460492503131e-16
 
-// note: might want to change this to POINT, instead of POINTS
 typedef struct point {
 	double x;
 	double y;
@@ -31,4 +30,10 @@ double scanAndCheck(double number);
 
 void fillPointsArray(PPOINT pointsArray);
 
+// Returns true if a and b are """equal""" (comparing doubles in C is weird...)
+// www.reddit.com/r/C_Programming/comments/4thsn7/comparing_doubles_in_c/
+bool compareDoubles(double a, double b);
+
+// Swaps points until it forms a proper quadrilateral,
+// then returns whether or not it is a rectangle.
 bool analyze4Points(PPOINT* points);
