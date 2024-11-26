@@ -3,6 +3,7 @@
 #include "main.h"
 #include "triangleSolver.h"
 #include "points.h"
+#include "menu.h"
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
