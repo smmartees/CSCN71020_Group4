@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "math.h"
+#include <stdbool.h>
 
 // ***NOTE**** may need to add additional .obj files from the linker menu.
 // currently linked: main.obj, triangleSolver.obj,
@@ -36,35 +37,35 @@ namespace PolygonChekerUnitTests
 
 		TEST_METHOD(AT111)	// testing analyze triangle using sides 1 1 1
 		{
-			int TriangleSides[3] = { 1,1,1 };
+			double TriangleSides[3] = { 1,1,1 };
 			char* ExpectedResult = "Equilateral triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(AT222)
 		{
-			int TriangleSides[3] = { 2,2,2 };
+			double TriangleSides[3] = { 2,2,2 };
 			char* ExpectedResult = "Equilateral triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(AT225)
 		{
-			int TriangleSides[3] = { 2,2,5};
+			double TriangleSides[3] = { 2,2,5};
 			char* ExpectedResult = "Not a triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(AT255)		//failed: function didn't compare all sides
 		{
-			int TriangleSides[3] = { 2,5,5 };
+			double TriangleSides[3] = { 2,5,5 };
 			char* ExpectedResult = "Isosceles triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(AT525)
 		{
-			int TriangleSides[3] = { 5,2,5 };
+			double TriangleSides[3] = { 5,2,5 };
 			char* ExpectedResult = "Isosceles triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
@@ -78,38 +79,67 @@ namespace PolygonChekerUnitTests
 		}
 		TEST_METHOD(AT123)
 		{
-			int TriangleSides[3] = { 1,2,3 };
+			double TriangleSides[3] = { 1,2,3 };
 			char* ExpectedResult = "Not a triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(AT734)
 		{
-			int TriangleSides[3] = { 6,3,4 };
+			double TriangleSides[3] = { 6,3,4 };
 			char* ExpectedResult = "Scalene triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(ATEquilateralFloat)
 		{
-			int TriangleSides[3] = { 1.5,1.5,1.5 };
+			double TriangleSides[3] = { 1.5,1.5,1.5 };
 			char* ExpectedResult = "Equilateral triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(ATIsoscelesFloat)	//failed: function cast to int
 		{
-			int TriangleSides[3] = { 1.5,1.3,1.5 };
+			double TriangleSides[3] = { 1.5,1.3,1.5 };
 			char* ExpectedResult = "Isosceles triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
 		}
 		TEST_METHOD(ATScaleneFloat)		//failed: function cast to int
 		{
-			int TriangleSides[3] = { 1.2,1.3,1.4 };
+			double TriangleSides[3] = { 1.2,1.3,1.4 };
 			char* ExpectedResult = "Scalene triangle";
 			char* ActualResult = analyzeTriangle(TriangleSides[0], TriangleSides[1], TriangleSides[2]);
 			Assert::AreEqual(ExpectedResult, ActualResult);
+		}
+	};
+
+	TEST_CLASS(InternalTriangleTests) 
+	{
+	public:
+		TEST_METHOD(EqualSides)
+		{
+			double Actual = getAngle(2.0, 2.0, 2.0);
+			double Expected = 60.00;
+			Assert::AreEqual(Expected, Actual);
+		}
+		TEST_METHOD(Isosceles322)
+		{
+			double Actual = getAngle(3.0, 2.0, 2.0);
+			double Expected = 97.1808;
+			Assert::AreEqual(Expected, Actual);
+		}
+		TEST_METHOD(Isosceles232)
+		{
+			double Actual = getAngle(2.0, 3.0, 2.0);
+			double Expected = 41.4069;
+			Assert::AreEqual(Expected, Actual);
+		}
+		TEST_METHOD(Isosceles223)
+		{
+			double Actual = getAngle(2.0, 2.0, 3.0);
+			double Expected = 41.4069;
+			Assert::AreEqual(Expected, Actual);
 		}
 	};
 
@@ -177,7 +207,7 @@ namespace PolygonChekerUnitTests
 			p2.x = 0.4;
 			p2.y = 0.9;
 
-			double expected = sqrt(0.2);
+			double expected = sqrt(0.05);
 			double actual = findSideLength(p1, p2);
 			Assert::AreEqual(expected, actual);
 		}
@@ -218,6 +248,29 @@ namespace PolygonChekerUnitTests
 
 			double expected = sqrt(337);
 			double actual = findSideLength(p1, p2);
+			Assert::AreEqual(expected, actual);
+		}
+	};
+
+	TEST_CLASS(AnalyzeFourPoints)
+	{
+	public:
+
+		TEST_METHOD(test1)
+		{
+			PPOINT testArray[NUMOFPOINTS] = createPointsArray();
+			PPOINT point1 = NULL;
+			setPoint(point1, 2, 2);
+			PPOINT point2 = NULL;
+			setPoint(point2, 2, 4);
+			PPOINT point3 = NULL;
+			setPoint(point3, 5, 2);
+			PPOINT point4 = NULL;
+			setPoint(point4, 5, 4);
+
+			bool expected = true;
+			bool actual = analyze4Points(testArray);
+
 			Assert::AreEqual(expected, actual);
 		}
 	};
