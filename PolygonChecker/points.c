@@ -104,12 +104,12 @@ void fillPointsArray(PPOINT pointsArray) {
 
 
 bool analyze4Points(PPOINT* points) {
-	double s1 = findSideLength(*points[0], *points[1]);
-	double s2 = findSideLength(*points[1], *points[2]);
-	double s3 = findSideLength(*points[2], *points[3]);
-	double s4 = findSideLength(*points[3], *points[0]);
-	double hs1s2 = findSideLength(*points[0], *points[2]);
-	double hs2s3 = findSideLength(*points[1], *points[3]);
+	double s1 = findSideLength((*points)[0], (*points)[1]);
+	double s2 = findSideLength((*points)[1], (*points)[2]);
+	double s3 = findSideLength((*points)[2], (*points)[3]);
+	double s4 = findSideLength((*points)[3], (*points)[0]);
+	double hs1s2 = findSideLength((*points)[0], (*points)[2]);
+	double hs2s3 = findSideLength((*points)[1], (*points)[3]);
 	double A = getAngle(hs2s3, s4, s1);
 	double B = getAngle(hs1s2, s1, s2);
 	double C = getAngle(hs2s3, s2, s3);
@@ -124,9 +124,9 @@ bool analyze4Points(PPOINT* points) {
 	D = getAngle(s4, s3, hs1s2);
 	if (A == 90 && B == 90 & C == 90 & D == 90) {
 		// actually swap the points before returning
-		POINT temp = *points[2];
-		*points[2] = *points[3];
-		*points[3] = temp;
+		POINT temp = (*points)[2];
+		(*points)[2] = (*points)[3];
+		(*points)[3] = temp;
 		return true;
 	}
 	return false;
