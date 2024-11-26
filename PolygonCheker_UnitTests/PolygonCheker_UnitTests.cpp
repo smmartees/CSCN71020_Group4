@@ -121,25 +121,29 @@ namespace PolygonChekerUnitTests
 		{
 			double Actual = getAngle(2.0, 2.0, 2.0);
 			double Expected = 60.00;
-			Assert::AreEqual(Expected, Actual);
+			double precision = 1e-6;
+			Assert::AreEqual(Expected, Actual, precision);
 		}
 		TEST_METHOD(Isosceles322)
 		{
 			double Actual = getAngle(3.0, 2.0, 2.0);
 			double Expected = 97.1808;
-			Assert::AreEqual(Expected, Actual);
+			double precision = 1e-2;
+			Assert::AreEqual(Expected, Actual, precision);
 		}
 		TEST_METHOD(Isosceles232)
 		{
 			double Actual = getAngle(2.0, 3.0, 2.0);
 			double Expected = 41.4069;
-			Assert::AreEqual(Expected, Actual);
+			double precision = 1e-2;
+			Assert::AreEqual(Expected, Actual, precision);
 		}
 		TEST_METHOD(Isosceles223)
 		{
 			double Actual = getAngle(2.0, 2.0, 3.0);
 			double Expected = 41.4069;
-			Assert::AreEqual(Expected, Actual);
+			double precision = 1e-2;
+			Assert::AreEqual(Expected, Actual, precision);
 		}
 	};
 
@@ -209,7 +213,8 @@ namespace PolygonChekerUnitTests
 
 			double expected = sqrt(0.05);
 			double actual = findSideLength(p1, p2);
-			Assert::AreEqual(expected, actual);
+			double precision = 1e-6;
+			Assert::AreEqual(expected, actual, precision);
 		}
 		TEST_METHOD(AllNegativeCoordinates)
 		{
@@ -258,18 +263,14 @@ namespace PolygonChekerUnitTests
 
 		TEST_METHOD(test1)
 		{
-			PPOINT testArray[NUMOFPOINTS] = createPointsArray();
-			PPOINT point1 = NULL;
-			setPoint(point1, 2, 2);
-			PPOINT point2 = NULL;
-			setPoint(point2, 2, 4);
-			PPOINT point3 = NULL;
-			setPoint(point3, 5, 2);
-			PPOINT point4 = NULL;
-			setPoint(point4, 5, 4);
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, 2);
+			setPoint(&testArray[1], 2, 4);
+			setPoint(&testArray[2], 5, 2);
+			setPoint(&testArray[3], 5, 4);
 
 			bool expected = true;
-			bool actual = analyze4Points(testArray);
+			bool actual = analyze4Points(&testArray);
 
 			Assert::AreEqual(expected, actual);
 		}

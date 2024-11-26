@@ -47,14 +47,6 @@ double getArea(PPOINT pointsArray) {
 			findSideLength(pointsArray[1], pointsArray[2]));
 }
 
-void getPoint(POINT* point) {
-	printf("Enter x-coordinate: ");
-	scanf("%d", &(*point).x); 
-	printf("Enter y-coordinate: ");
-	scanf("%d", &(*point).y); 
-}
-
-
 
 void setPoint(PPOINT point, double x, double y) {
 	point->x = x;
@@ -76,7 +68,7 @@ double scanAndCheck(double number) {
 		}
 		else {
 			printf("Invalid input\n");
-			while (getchar() != '\n');
+			//while (getchar() != '\n');
 		}
 	}
 }
