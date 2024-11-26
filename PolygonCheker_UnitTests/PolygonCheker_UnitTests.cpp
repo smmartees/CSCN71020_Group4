@@ -268,14 +268,6 @@ namespace PolygonChekerUnitTests
 			setPoint(&testArray[1], 2, 4);
 			setPoint(&testArray[2], 5, 2);
 			setPoint(&testArray[3], 5, 4);
-			/*PPOINT point1 = NULL;
-			setPoint(point1, 2, 2);
-			PPOINT point2 = NULL;
-			setPoint(point2, 2, 4);
-			PPOINT point3 = NULL;
-			setPoint(point3, 5, 2);
-			PPOINT point4 = NULL;
-			setPoint(point4, 5, 4);*/
 
 			bool expected = true;
 			bool actual = analyze4Points(&testArray);
