@@ -41,7 +41,7 @@ int main() {
 		case 2:
 			// Rectangle case
 		{
-			PPOINT pointsArray = createPointsArray(NUMOFPOINTS);
+			PPOINT pointsArray = createPointsArray();
 			
 			fillPointsArray(pointsArray);
 
@@ -53,7 +53,7 @@ int main() {
 							/// just to test points ///
 
 			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
-			bool rectangleCheck = analyze4Points(pointsArray);
+			bool rectangleCheck = analyze4Points(&pointsArray);
 			if (rectangleCheck != true) {
 				printf("Not a rectangle\n");
 			}
