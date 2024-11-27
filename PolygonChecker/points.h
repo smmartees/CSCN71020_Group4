@@ -1,7 +1,7 @@
 #pragma once
 #include <stdbool.h>
 // This helps in the comparison of doubles
-#define DBL_EPSILON		2.2204460492503131e-16
+#define DBL_EPSILON		2.2204460492503131e-13
 
 #define NUMOFPOINTS 4
 
