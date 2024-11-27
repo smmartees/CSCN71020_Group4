@@ -38,3 +38,9 @@ bool compareDoubles(double a, double b);
 // Swaps points until it forms a proper quadrilateral,
 // then returns whether or not it is a rectangle.
 bool orderAndAnalyze4Points(PPOINT* points);
+// NOTE:
+// There are 3 possible shapes: 2 bowties, and a quadrilateral.
+// (it can also be a point, line, or triangle, but they don't matter.)
+// If it is a quadrilateral, then sum of interior angles == 360
+// If it is a bowtie, then sum of interior angles != 360
+// Return only if quadrilateral, otherwise, swap points around until it is.
