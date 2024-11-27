@@ -7,7 +7,6 @@
 // currently linked: main.obj, triangleSolver.obj,
 
 extern "C" {
-#include "../PolygonChecker/main.h"
 #include "../PolygonChecker/triangleSolver.h"
 #include "../PolygonChecker/points.h"
 #include "../PolygonChecker/menu.h"

@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "points.h"
-#include "main.h"
+#include "menu.h"
 #include "triangleSolver.h"
 #include <stdio.h>
 #include <stdlib.h>

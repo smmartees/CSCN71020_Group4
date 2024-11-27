@@ -1,9 +1,10 @@
 #pragma once
-#include "main.h"
 #include <stdbool.h>
-
 // This helps in the comparison of doubles
 #define DBL_EPSILON 2.2204460492503131e-16
+
+#define NUMOFPOINTS 4
+
 
 typedef struct point {
 	double x;
