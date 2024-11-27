@@ -4,8 +4,6 @@
 #include <stdbool.h>
 #include <math.h>
 #include "triangleSolver.h"
-// The approximate value of PI
-
 
 double* getTriangleSides(double* triangleSides) {
 	int sideNum[TRIANGLESIDES] = { 1, 2, 3 };
