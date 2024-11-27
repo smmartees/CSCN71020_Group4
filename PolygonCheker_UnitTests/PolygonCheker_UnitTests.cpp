@@ -439,4 +439,31 @@ namespace PolygonChekerUnitTests
 			Assert::AreEqual(expected, actual);
 		}
 	};
+	TEST_CLASS(findPerimeterTests)
+	{
+	public:
+		TEST_METHOD(Test1)
+		{
+			// not rearanging points. Longer sides due to bowtie.
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, 2);
+			setPoint(&testArray[1], 2, 4);
+			setPoint(&testArray[2], 5, 2);
+			setPoint(&testArray[3], 5, 4);
+
+			double expected = 
+		}
+	};
+	TEST_CLASS(getAreaTests)
+	{
+	public:
+		TEST_METHOD(Test1)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], -2, -2);
+			setPoint(&testArray[1], -2, -4);
+			setPoint(&testArray[2], -5, -2);
+			setPoint(&testArray[3], -5, -4);
+		}
+	};
 }
