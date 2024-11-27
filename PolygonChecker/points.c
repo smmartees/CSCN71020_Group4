@@ -12,7 +12,6 @@ PPOINT createPointsArray() {
 		printf("did not allocate memory properly\n");
 		exit(EXIT_FAILURE);
 	}
-
 	return newArray;
 }
 
@@ -47,7 +46,6 @@ double getArea(PPOINT pointsArray) {
 			findSideLength(pointsArray[1], pointsArray[2]));
 }
 
-
 void setPoint(PPOINT point, double x, double y) {
 	point->x = x;
 	point->y = y; 
@@ -73,8 +71,6 @@ double scanAndCheck(double number) {
 	}
 }
 
-
-
 void fillPointsArray(PPOINT pointsArray) {
 	int pointNum = 1;
 	for (int i = 0; i < NUMOFPOINTS; i++) {
@@ -94,26 +90,6 @@ void fillPointsArray(PPOINT pointsArray) {
 	}
 }
 
-// NOTE: these functions could be added later, 
-//		 to make analyze4Points() more modular.
-// 
-//void setAngles(double sideArray[], double* angleArray[]) {
-//	// could be written
-//}
-// 
-//void swapPoints(PPOINT* points, int p1, int p2){
-//	// could be written 
-//}
-// 
-//bool isQuadrilateral(double sum) {
-//	return (compareDoubles(sum, 360));
-//}
-//
-//bool isRectangle(double A, double B, double C, double D) {
-//	return (compareDoubles(A, 90) && compareDoubles(B, 90) && 
-//			compareDoubles(C, 90) && compareDoubles(D, 90));
-//}
-
 bool compareDoubles(double a, double b) {
 	return (fabs(a - b) < (DBL_EPSILON * fabs(a + b)));
 }
@@ -130,7 +106,6 @@ bool orderAndAnalyze4Points(PPOINT* points) {
 	double B = getAngle(hs1s2, s1, s2);
 	double C = getAngle(hs2s3, s2, s3);
 	double D = getAngle(hs1s2, s3, s4);
-	
 	// check if shape is a quadrilateral
 	if ((compareDoubles(A+B+C+D, 360))) {
 		// return true if quadrilateral is rectangle
