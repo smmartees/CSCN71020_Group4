@@ -32,9 +32,6 @@
     <ClInclude Include="triangleSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="points.h">
       <Filter>Header Files</Filter>
     </ClInclude>
