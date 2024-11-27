@@ -271,7 +271,7 @@ namespace PolygonChekerUnitTests
 			setPoint(&testArray[3], 5, 4);
 
 			bool expected = true;
-			bool actual = analyze4Points(&testArray);
+			bool actual = orderAndAnalyze4Points(&testArray);
 
 			Assert::AreEqual(expected, actual);
 		}
@@ -284,7 +284,7 @@ namespace PolygonChekerUnitTests
 			setPoint(&testArray[3], 6, 4);
 
 			bool expected = true;
-			bool actual = analyze4Points(&testArray);
+			bool actual = orderAndAnalyze4Points(&testArray);
 
 			Assert::AreEqual(expected, actual);
 		}

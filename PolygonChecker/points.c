@@ -112,7 +112,7 @@ bool compareDoubles(double a, double b) {
 	return (fabs(a - b) < (DBL_EPSILON * fabs(a + b)));
 }
 
-bool analyze4Points(PPOINT* points) {
+bool orderAndAnalyze4Points(PPOINT* points) {
 	// define all 6 possible side lengths, and 4 interior angles
 	double s1 = findSideLength((*points)[0], (*points)[1]);
 	double s2 = findSideLength((*points)[1], (*points)[2]);
