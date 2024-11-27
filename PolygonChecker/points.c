@@ -92,15 +92,10 @@ void fillPointsArray(PPOINT pointsArray) {
 	}
 }
 
-bool compareDoubles(double a, double b) {
-	return (fabs(a - b) < (DBL_EPSILON * fabs(a + b)));
-}
-
-
 // NOTE: these functions could be added later, 
 //		 to make analyze4Points() more modular.
 // 
-//void setAngles(double[] sideArray, double* angleArray[]) {
+//void setAngles(double sideArray[], double* angleArray[]) {
 //	// could be written
 //}
 // 
@@ -113,7 +108,11 @@ bool compareDoubles(double a, double b) {
 //			compareDoubles(C, 90) && compareDoubles(D, 90));
 //}
 
-bool analyze4Points(PPOINT* points) {
+bool compareDoubles(double a, double b) {
+	return (fabs(a - b) < (DBL_EPSILON * fabs(a + b)));
+}
+
+bool orderAndAnalyze4Points(PPOINT* points) {
 	// define all 6 possible side lengths, and 4 interior angles
 	double s1 = findSideLength((*points)[0], (*points)[1]);
 	double s2 = findSideLength((*points)[1], (*points)[2]);
@@ -126,8 +125,10 @@ bool analyze4Points(PPOINT* points) {
 	double C = getAngle(hs2s3, s2, s3);
 	double D = getAngle(hs1s2, s3, s4);
 	// There are 3 possible shapes: 2 bowties, and a quadrilateral.
+	// (it can also be a point, line, or triangle, but they don't matter.)
 	// If it is a quadrilateral, then sum of interior angles == 360
-	// Return if quadrilateral, or swap points around until it is.
+	// If it is a bowtie, then sum of interior angles != 360
+	// Return only if quadrilateral, otherwise, swap points around until it is.
 	
 	// check if shape is a quadrilateral
 	if ((compareDoubles(A+B+C+D, 360))) {
@@ -135,11 +136,10 @@ bool analyze4Points(PPOINT* points) {
 		return (compareDoubles(A, 90) && compareDoubles(B, 90) &&
 				compareDoubles(C, 90) && compareDoubles(D, 90));
 	}
-	// swap P3 with P4
+	// shape is a bowtie right now, so swap P3 with P4
 	POINT temp = (*points)[2];
 	(*points)[2] = (*points)[3];
 	(*points)[3] = temp;
-	// reset interior angles
 	A = getAngle(s2, hs1s2, s1);
 	B = getAngle(s4, s1, hs2s3);
 	C = getAngle(s2, hs2s3, s3);
@@ -150,16 +150,23 @@ bool analyze4Points(PPOINT* points) {
 		return (compareDoubles(A, 90) && compareDoubles(B, 90) &&
 				compareDoubles(C, 90) && compareDoubles(D, 90));
 	}
-	// swap P2 with P3
+	// shape is still a bowtie, so swap P2 with P3
 	temp = (*points)[1];
 	(*points)[1] = (*points)[2];
 	(*points)[2] = temp;
-	// reset interior angles
 	A = getAngle(s1, hs2s3, s2);
 	B = getAngle(s3, s2, hs1s2);
 	C = getAngle(s1, hs1s2, s4);
 	D = getAngle(s3, s4, hs2s3);
 	// shape must be a quadrilateral. Return true if it is a rectangle
-	return (compareDoubles(A, 90) && compareDoubles(B, 90) &&
-			compareDoubles(C, 90) && compareDoubles(D, 90));
+	if ((compareDoubles(A + B + C + D, 360))) {
+		// return true \ if quadrilateral is rectangle
+		return (compareDoubles(A, 90) && compareDoubles(B, 90) &&
+				compareDoubles(C, 90) && compareDoubles(D, 90));
+	}
+	// shape is a point, line, or triangle. For consistency, swap back points
+	temp = (*points)[1];
+	(*points)[1] = (*points)[3];
+	(*points)[3] = temp;
+	return false; // not a rectangle
 }
