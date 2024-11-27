@@ -36,4 +36,4 @@ bool compareDoubles(double a, double b);
 
 // Swaps points until it forms a proper quadrilateral,
 // then returns whether or not it is a rectangle.
-bool analyze4Points(PPOINT* points);
+bool orderAndAnalyze4Points(PPOINT* points);
