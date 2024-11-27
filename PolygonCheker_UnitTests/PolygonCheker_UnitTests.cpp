@@ -7,7 +7,6 @@
 // currently linked: main.obj, triangleSolver.obj,
 
 extern "C" {
-#include "../PolygonChecker/main.h"
 #include "../PolygonChecker/triangleSolver.h"
 #include "../PolygonChecker/points.h"
 #include "../PolygonChecker/menu.h"
@@ -118,6 +117,13 @@ namespace PolygonChekerUnitTests
 	TEST_CLASS(InternalTriangleTests) 
 	{
 	public:
+		TEST_METHOD(EqualSides1)
+		{
+			double Actual = getAngle(1.0, 1.0, 1.0);
+			double Expected = 60.00;
+			double precision = 1e-6;
+			Assert::AreEqual(Expected, Actual, precision);
+		}
 		TEST_METHOD(EqualSides)
 		{
 			double Actual = getAngle(2.0, 2.0, 2.0);
@@ -437,6 +443,99 @@ namespace PolygonChekerUnitTests
 			bool expected = true;
 
 			Assert::AreEqual(expected, actual);
+		}
+	};
+	TEST_CLASS(findPerimeterTests)
+	{
+	public:
+		TEST_METHOD(simpleRectangle)
+		{
+			// not rearanging points. Longer sides due to bowtie.
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, 2);
+			setPoint(&testArray[1], 2, 4);
+			setPoint(&testArray[2], 5, 4);
+			setPoint(&testArray[3], 5, 2);
+
+			double expected = 10;
+			double actual = findPerimeter(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
+		}
+		TEST_METHOD(simpleQuadrilatoral)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2.5, 2);
+			setPoint(&testArray[1], 2, 4);
+			setPoint(&testArray[2], 5, 4.5);
+			setPoint(&testArray[3], 5, 2);
+
+			double expected = 10.1029;
+			double actual = findPerimeter(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
+		}
+	};
+	TEST_CLASS(getAreaTests)
+	{
+	public:
+		TEST_METHOD(SimpleRectangleArea)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, 2);
+			setPoint(&testArray[1], 2, 4);
+			setPoint(&testArray[2], 5, 4);
+			setPoint(&testArray[3], 5, 2);
+
+			double expected = 6.0000;
+			double actual = getArea(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
+		}
+		TEST_METHOD(SimpleRectangleAreNegativeXPoints)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], -2, 2);
+			setPoint(&testArray[1], -2, 4);
+			setPoint(&testArray[2], 5, 4);
+			setPoint(&testArray[3], 5, 2);
+
+			double expected = 14.0000;
+			double actual = getArea(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
+		}
+		TEST_METHOD(SimpleRectangleAreNegativeYPoints)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, -2);
+			setPoint(&testArray[1], 2, 4);
+			setPoint(&testArray[2], 5, 4);
+			setPoint(&testArray[3], 5, -2);
+
+			double expected = 18.0000;
+			double actual = getArea(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
+		}
+		TEST_METHOD(rotatedSquareNegativeXPoints)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 1, 1);
+			setPoint(&testArray[1], 1.5, 1.5);
+			setPoint(&testArray[2], 2, 1);
+			setPoint(&testArray[3], 1.5, 0.5);
+
+			double expected = 0.5;
+			double actual = getArea(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
 		}
 	};
 }

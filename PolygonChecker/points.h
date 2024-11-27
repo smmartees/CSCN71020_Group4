@@ -1,9 +1,10 @@
 #pragma once
-#include "main.h"
 #include <stdbool.h>
-
 // This helps in the comparison of doubles
-#define DBL_EPSILON 2.2204460492503131e-16
+#define DBL_EPSILON		2.2204460492503131e-16
+
+#define NUMOFPOINTS 4
+
 
 typedef struct point {
 	double x;
@@ -18,6 +19,7 @@ double findSideLength(POINT p1, POINT p2);
 
 // returns sum of lengths betweeen 4 points in array
 double findPerimeter(PPOINT points);
+
 
 // returns area of a rectangle. Must confirm that it is a rectangle first.
 double getArea(PPOINT pointsArray);
@@ -43,3 +45,4 @@ bool orderAndAnalyze4Points(PPOINT* points);
 // If it is a quadrilateral, then sum of interior angles == 360
 // If it is a bowtie, then sum of interior angles != 360
 // Return only if quadrilateral, otherwise, swap points around until it is.
+
