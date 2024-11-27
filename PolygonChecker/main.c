@@ -1,20 +1,15 @@
 #define _CRT_SECURE_NO_WARNINGS
+
+#include "triangleSolver.h"
+#include "points.h"
+#include "menu.h"
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
 // CSCN7
 // samp - CSCN71000 (Implementation) - Group Project - Section 1
 
-#include "main.h"
-#include "triangleSolver.h"
-#include "points.h"
-#include <stdio.h>
-#include <stdbool.h>
-
-#define ZERO 0
-#define ONE 1
-#define TWO 2
-#define TRIANGLESIDES 3
-
-
-int side = ZERO;
 
 int main() {
 
@@ -30,21 +25,39 @@ int main() {
 		{
 		case 1:
 			printf("Triangle selected.\n");
-			int triangleSides[TRIANGLESIDES] = { ZERO, ZERO, ZERO };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
+			double triangleSides[TRIANGLESIDES] = { 0, 0, 0 };
+			double* triangleSidesPtr = getTriangleSides(triangleSides);
 			
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf("%s\n", result);
-			// if statement here for adding angles/ printing them
+			// if statement here for getting and printing angles
+			if (result != "Not a triangle") {
+				printf("\nAngles of the triangle:\n");
+				printf("Angle 1: %lf\n", getAngle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]));
+				printf("Angle 2: %lf\n", getAngle(triangleSidesPtr[1], triangleSidesPtr[2], triangleSidesPtr[0]));
+				printf("Angle 3: %lf\n", getAngle(triangleSidesPtr[2], triangleSidesPtr[0], triangleSidesPtr[1]));
+			}
 			break;
 		case 2:
-			// implement rectangle stuff
+			// Rectangle case
 		{
-			PPOINTS points = createPointsArray(NUMOFPOINTS);
+			PPOINT pointsArray = createPointsArray();
+			
+			fillPointsArray(pointsArray);
 
+			bool rectangleCheck = orderAndAnalyze4Points(&pointsArray);
+			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
+			if (rectangleCheck != true) {
+				printf("Not a rectangle\n");
+			}
+			else {
+				printf("This is a rectangle\n");
+				printf("Area: %lf\n", getArea(pointsArray));
 
+			}
 
-			free(points);
+			// free points after case finished
+			free(pointsArray);
 		}
 			break;
 		case 0:
@@ -59,40 +72,9 @@ int main() {
 	return 0;
 }
 
-void printWelcome() {
-	printf("\n");
-	printf(" **********************\n");
-	printf("**     Welcome to     **\n");
-	printf("**   Polygon Checker  **\n");
-	printf(" **********************\n");
-}
 
-// next to fix // ensure no garbage
-int printShapeMenu() {
-	printf("1. Triangle\n");
-	printf("2. Rectangle\n");
-	printf("0. Exit\n");
 
-	int shapeChoice;
 
-	printf("Enter number: ");
-	scanf("%1o", &shapeChoice); // next fix
 
-	return shapeChoice;
-}
 
-int* getTriangleSides(int* triangleSides) {
-	int sideNum[TRIANGLESIDES] = { ONE, TWO, TRIANGLESIDES };
-	printf("Enter the three sides of the triangle: \n");
-	for (int i = ZERO; i < TRIANGLESIDES; i++)
-	{
-		printf("side%d: ", sideNum[i]);
-		if (scanf("%d", &triangleSides[i]) != ONE) {
-			printf("Invalid input. Please enter integer\n");
-			i--;
 
-			while (getchar() != '\n');
-		}
-	}
-	return triangleSides;
-}
