@@ -74,6 +74,7 @@ double scanAndCheck(double number) {
 }
 
 
+
 void fillPointsArray(PPOINT pointsArray) {
 	int pointNum = 1;
 	for (int i = 0; i < NUMOFPOINTS; i++) {
@@ -83,6 +84,7 @@ void fillPointsArray(PPOINT pointsArray) {
 
 		printf("\nPoint%d X\n", pointNum);
 		x = scanAndCheck(x);
+
 
 		printf("\nPoint%d Y\n", pointNum);
 		y = scanAndCheck(y);
