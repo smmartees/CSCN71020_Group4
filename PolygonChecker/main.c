@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "main.h"
 #include "triangleSolver.h"
 #include "points.h"
 #include "menu.h"
@@ -34,9 +33,9 @@ int main() {
 			// if statement here for getting and printing angles
 			if (result != "Not a triangle") {
 				printf("\nAngles of the triangle:\n");
-				printf("Angle 1: %f\n", getAngle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]));
-				printf("Angle 2: %f\n", getAngle(triangleSidesPtr[1], triangleSidesPtr[2], triangleSidesPtr[0]));
-				printf("Angle 3: %f\n", getAngle(triangleSidesPtr[2], triangleSidesPtr[0], triangleSidesPtr[1]));
+				printf("Angle 1: %lf\n", getAngle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]));
+				printf("Angle 2: %lf\n", getAngle(triangleSidesPtr[1], triangleSidesPtr[2], triangleSidesPtr[0]));
+				printf("Angle 3: %lf\n", getAngle(triangleSidesPtr[2], triangleSidesPtr[0], triangleSidesPtr[1]));
 			}
 			break;
 		case 2:
@@ -46,8 +45,8 @@ int main() {
 			
 			fillPointsArray(pointsArray);
 
-			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
 			bool rectangleCheck = orderAndAnalyze4Points(&pointsArray);
+			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
 			if (rectangleCheck != true) {
 				printf("Not a rectangle\n");
 			}

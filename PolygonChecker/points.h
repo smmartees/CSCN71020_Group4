@@ -1,9 +1,10 @@
 #pragma once
-#include "main.h"
 #include <stdbool.h>
-
 // This helps in the comparison of doubles
 #define DBL_EPSILON		2.2204460492503131e-16
+
+#define NUMOFPOINTS 4
+
 
 typedef struct point {
 	double x;
@@ -37,3 +38,9 @@ bool compareDoubles(double a, double b);
 // Swaps points until it forms a proper quadrilateral,
 // then returns whether or not it is a rectangle.
 bool orderAndAnalyze4Points(PPOINT* points);
+// NOTE:
+// There are 3 possible shapes: 2 bowties, and a quadrilateral.
+// (it can also be a point, line, or triangle, but they don't matter.)
+// If it is a quadrilateral, then sum of interior angles == 360
+// If it is a bowtie, then sum of interior angles != 360
+// Return only if quadrilateral, otherwise, swap points around until it is.

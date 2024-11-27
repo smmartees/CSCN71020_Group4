@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "main.h"
+#include "menu.h"
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-
 #include "triangleSolver.h"
+// The approximate value of PI
 
 
 double* getTriangleSides(double* triangleSides) {

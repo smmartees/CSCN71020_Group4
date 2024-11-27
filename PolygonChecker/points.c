@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "points.h"
-#include "main.h"
+#include "menu.h"
 #include "triangleSolver.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -99,6 +99,10 @@ void fillPointsArray(PPOINT pointsArray) {
 //	// could be written
 //}
 // 
+//void swapPoints(PPOINT* points, int p1, int p2){
+//	// could be written 
+//}
+// 
 //bool isQuadrilateral(double sum) {
 //	return (compareDoubles(sum, 360));
 //}
@@ -124,11 +128,6 @@ bool orderAndAnalyze4Points(PPOINT* points) {
 	double B = getAngle(hs1s2, s1, s2);
 	double C = getAngle(hs2s3, s2, s3);
 	double D = getAngle(hs1s2, s3, s4);
-	// There are 3 possible shapes: 2 bowties, and a quadrilateral.
-	// (it can also be a point, line, or triangle, but they don't matter.)
-	// If it is a quadrilateral, then sum of interior angles == 360
-	// If it is a bowtie, then sum of interior angles != 360
-	// Return only if quadrilateral, otherwise, swap points around until it is.
 	
 	// check if shape is a quadrilateral
 	if ((compareDoubles(A+B+C+D, 360))) {
