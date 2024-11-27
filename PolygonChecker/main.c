@@ -46,8 +46,8 @@ int main() {
 			
 			fillPointsArray(pointsArray);
 
-			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
 			bool rectangleCheck = orderAndAnalyze4Points(&pointsArray);
+			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
 			if (rectangleCheck != true) {
 				printf("Not a rectangle\n");
 			}
