@@ -1,3 +1,5 @@
+// CSCN71000 - section 1 - Group 4 - Group Assignment
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "menu.h"
@@ -20,13 +22,14 @@ int printShapeMenu() {
 	int shapeChoice;
 	bool validity = false;
 	do {
+		// get user input
 		printf("Enter number: ");
 		if (scanf("%1d", &shapeChoice) != 1)
 		{
 			while (getchar() != '\n');
 			printf("Invalid input\n");
 		}
-
+		// check input
 		if (shapeChoice == 1 || shapeChoice == 2 || shapeChoice == 0) {
 			validity = true;
 		}

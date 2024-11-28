@@ -1,3 +1,5 @@
+// CSCN71000 - section 1 - Group 4 - Group Assignment
+
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "math.h"
