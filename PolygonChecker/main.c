@@ -1,4 +1,4 @@
-// CSCN71000 - section 1 - Group 4
+// CSCN71000 - section 1 - Group 4 - Group Assignment
 // 
 // Sam Pelot
 // Megha Panchani

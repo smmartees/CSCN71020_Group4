@@ -1,4 +1,7 @@
+// CSCN71000 - section 1 - Group 4 - Group Assignment
+
 #define _CRT_SECURE_NO_WARNINGS
+
 #include "menu.h"
 #include <stdio.h>
 #include <stdbool.h>
