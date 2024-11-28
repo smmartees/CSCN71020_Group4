@@ -1,10 +1,9 @@
 #pragma once
-
+// The approximate value of PI
 #define M_PI 3.14159265358979323846
 #define TRIANGLESIDES 3
 
 double* getTriangleSides(double* triangleSides);
-
 
 char* analyzeTriangle(double side1, double side2, double side3);
 

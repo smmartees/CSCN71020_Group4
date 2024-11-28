@@ -60,14 +60,9 @@ double scanAndCheck(double number) {
 			while (getchar() != '\n');
 			printf("Invalid input\n");
 		}
-		while (getchar() != '\n');
-		if (number > 0) {
-			return number;
-		}
-		else {
-			printf("Invalid input\n");
-			//while (getchar() != '\n');
-		}
+		while (getchar() != '\n'); //clearing buffer
+		
+		return number;
 	}
 }
 
