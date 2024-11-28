@@ -1,11 +1,12 @@
 #pragma once
 #include <stdbool.h>
-// This helps in the comparison of doubles
-#define DBL_EPSILON		2.2204460492503131e-13
 
+// This value is used in the comparison of doubles
+#define DBL_EPSILON		2.2204460492503131e-13
+// Number of points in a quadrilateral
 #define NUMOFPOINTS 4
 
-
+// ADT for a single point in a 2D plane
 typedef struct point {
 	double x;
 	double y;
@@ -14,22 +15,24 @@ typedef struct point {
 // Creates / initializes the array of points
 PPOINT createPointsArray();
 
-// finds length between 2 points (param order doesn't matter)
+// Finds length between 2 points (param order doesn't matter)
 double findSideLength(POINT p1, POINT p2);
 
-// returns sum of lengths betweeen 4 points in array
+// Returns sum of lengths betweeen 4 points in array
 double findPerimeter(PPOINT points);
 
 
-// returns area of a rectangle. Must confirm that it is a rectangle first.
+// Returns area of a rectangle. Must confirm that it is a rectangle first.
 double getArea(PPOINT pointsArray);
               
 
 // Updates a point's x and y coordinates with given values
 void setPoint(PPOINT point, double x, double y); 
 
+// Gets user input, and checks if it is a valid double
 double scanAndCheck(double number);
 
+// Fills a POINT array
 void fillPointsArray(PPOINT pointsArray);
 
 // Returns true if a and b are """equal""" (comparing doubles in C is weird...)
