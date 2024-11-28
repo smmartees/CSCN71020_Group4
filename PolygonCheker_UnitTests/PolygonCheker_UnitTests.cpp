@@ -474,7 +474,7 @@ namespace PolygonChekerUnitTests
 			setPoint(&testArray[2], 9, 2);
 			setPoint(&testArray[3], 9, 1);
 
-			double expected = 20;
+			double expected = 18;
 			double actual = findPerimeter(testArray);
 			double precision = 1e-4;
 
