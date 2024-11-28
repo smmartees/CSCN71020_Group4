@@ -14,7 +14,6 @@ double* getTriangleSides(double* triangleSides) {
 		if (scanf("%lf", &triangleSides[i]) != 1) {
 			printf("Invalid input. Please enter number\n");
 			i--;
-
 			while (getchar() != '\n');
 		}
 	}
@@ -39,7 +38,6 @@ char* analyzeTriangle(double side1, double side2, double side3) {
 	else {
 		return "Scalene triangle";
 	}
-
 	return result;
 }
 
