@@ -1,3 +1,5 @@
+// CSCN71000 - section 1 - Group 4 - Group Assignment
+
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "math.h"
@@ -463,6 +465,21 @@ namespace PolygonChekerUnitTests
 
 			Assert::AreEqual(expected, actual, precision);
 		}
+		TEST_METHOD(simpleRectangle19)
+		{
+			// not rearanging points. Longer sides due to bowtie.
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 1, 1);
+			setPoint(&testArray[1], 1, 2);
+			setPoint(&testArray[2], 9, 2);
+			setPoint(&testArray[3], 9, 1);
+
+			double expected = 18;
+			double actual = findPerimeter(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
+		}
 		TEST_METHOD(simpleQuadrilatoral)
 		{
 			PPOINT testArray = createPointsArray();
@@ -472,6 +489,20 @@ namespace PolygonChekerUnitTests
 			setPoint(&testArray[3], 5, 2);
 
 			double expected = 10.1029;
+			double actual = findPerimeter(testArray);
+			double precision = 1e-4;
+
+			Assert::AreEqual(expected, actual, precision);
+		}
+		TEST_METHOD(SimplePerimeterRectangleAreNegativeYPoints)
+		{
+			PPOINT testArray = createPointsArray();
+			setPoint(&testArray[0], 2, -2);
+			setPoint(&testArray[1], 2, 4);
+			setPoint(&testArray[2], 5, 4);
+			setPoint(&testArray[3], 5, -2);
+
+			double expected = 18.0000;
 			double actual = findPerimeter(testArray);
 			double precision = 1e-4;
 

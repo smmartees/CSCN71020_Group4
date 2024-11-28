@@ -1,3 +1,10 @@
+// CSCN71000 - section 1 - Group 4 - Group Assignment
+// 
+// Sam Pelot
+// Megha Panchani
+// Brodie Arkell
+// Aleksandar Kekic
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "triangleSolver.h"
@@ -7,20 +14,11 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-// CSCN7
-// samp - CSCN71000 (Implementation) - Group Project - Section 1
-
-
 int main() {
-
-	
-
 	bool continueProgram = true;
 	while (continueProgram) {
 		printWelcome();
-
 		int shapeChoice = printShapeMenu();
-
 		switch (shapeChoice)
 		{
 		case 1:
@@ -40,12 +38,12 @@ int main() {
 			break;
 		case 2:
 			// Rectangle case
-		{
+			printf("Rectangle selected.\n");
 			PPOINT pointsArray = createPointsArray();
-			
 			fillPointsArray(pointsArray);
-
+			// order points, and check if it is a rectangle
 			bool rectangleCheck = orderAndAnalyze4Points(&pointsArray);
+			// get perimeter and area
 			printf("Perimeter: %lf\n", findPerimeter(pointsArray));
 			if (rectangleCheck != true) {
 				printf("Not a rectangle\n");
@@ -53,12 +51,9 @@ int main() {
 			else {
 				printf("This is a rectangle\n");
 				printf("Area: %lf\n", getArea(pointsArray));
-
 			}
-
 			// free points after case finished
 			free(pointsArray);
-		}
 			break;
 		case 0:
 			continueProgram = false;
@@ -71,10 +66,3 @@ int main() {
 	}
 	return 0;
 }
-
-
-
-
-
-
-
